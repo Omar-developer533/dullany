@@ -1,3 +1,4 @@
+import 'package:dullany/core/router/app_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +7,7 @@ void main() async {
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
-      path: 'assets/translation/',
+      path: 'assets/translation',
       supportedLocales: [Locale('ar')],
       fallbackLocale: Locale('ar'),
       saveLocale: true,
@@ -20,7 +21,9 @@ class Dullany extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
+      debugShowCheckedModeBanner: false,
+      routerConfig: router,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
