@@ -1,3 +1,6 @@
+import 'dart:async';
+import 'package:dullany/core/functions/navigator.dart';
+import 'package:dullany/core/router/app_router.dart';
 import 'package:dullany/core/utls/app_colors.dart';
 import 'package:dullany/features/splash/presentation/views/widgets/custom_logo.dart';
 import 'package:dullany/features/splash/presentation/views/widgets/welcom_message.dart';
@@ -13,7 +16,7 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 3), () {});
+    delayedNavigate(context);
     super.initState();
   }
 
@@ -32,3 +35,8 @@ class _SplashViewState extends State<SplashView> {
     );
   }
 }
+
+Future<void> delayedNavigate(context) async =>
+    Future.delayed(Duration(seconds: 4), () {
+      customReplacementNavigate(context, kLoginView);
+    });
