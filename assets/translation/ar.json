@@ -1,6 +1,11 @@
 {
 
 "Dullany" : "دلني",
-"we select the best for you":"نختار الأفضل لأجلك"
-
+"we select the best for you":"نختار الأفضل لأجلك",
+"login":"تسجيل الدخول",
+"phon number":"رقم الهاتف",
+"password":"كلمة السر",
+"Enter":"دخول",
+"New User?":"مستخدم جديد؟ ",
+"Create Account":"انشاء حساب"
 }
