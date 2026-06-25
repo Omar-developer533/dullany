@@ -1,4 +1,3 @@
-
 import 'package:dullany/core/utls/app_colors.dart';
 import 'package:dullany/core/utls/app_styles.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -11,7 +10,12 @@ class CustomFormField extends StatelessWidget {
     required this.icon,
     this.textInputType,
     this.validator,
+    this.controller,
+    this.obscureText = false, this.iconTap,
   });
+  final VoidCallback? iconTap;
+  final TextEditingController? controller;
+  final bool obscureText;
   final String hint;
   final IconData icon;
   final TextInputType? textInputType;
@@ -19,6 +23,8 @@ class CustomFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      obscureText: obscureText,
+      controller: controller,
       validator: validator,
       keyboardType: textInputType,
       decoration: InputDecoration(
@@ -26,7 +32,10 @@ class CustomFormField extends StatelessWidget {
           hint.tr(),
           style: AppStyles.body.copyWith(color: AppColors.textPSecondary),
         ),
-        suffixIcon: Icon(icon, color: AppColors.textPSecondary),
+        suffixIcon: InkWell(
+          onTap: iconTap,
+          child: Icon(icon, color: AppColors.textPSecondary),
+        ),
         border: OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.textPSecondary),
           borderRadius: BorderRadius.circular(16),

@@ -7,5 +7,8 @@
 "password":"كلمة السر",
 "Enter":"دخول",
 "New User?":"مستخدم جديد؟ ",
-"Create Account":"انشاء حساب"
+"Create Account":"انشاء حساب",
+"this field is required":"هذا الحقل مطلوب",
+"Enter the correct number":"يرجى ادخال رقم صحيح",
+"the password maby more than 8 charecters":"كلمة السر يجب ان تكون اكثر من 8 محارف"
 }
