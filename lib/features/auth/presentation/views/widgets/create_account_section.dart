@@ -1,5 +1,3 @@
-import 'package:dullany/core/functions/navigator.dart';
-import 'package:dullany/core/router/app_router.dart';
 import 'package:dullany/core/utls/app_colors.dart';
 import 'package:dullany/core/utls/app_styles.dart';
 import 'package:dullany/core/utls/validator.dart';
@@ -8,18 +6,23 @@ import 'package:dullany/features/auth/presentation/views/widgets/custom_form_fie
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class LogInSection extends StatefulWidget {
-  const LogInSection({super.key});
+class CreateAccountSection extends StatefulWidget {
+  const CreateAccountSection({super.key});
 
   @override
-  State<LogInSection> createState() => _LogInSectionState();
+  State<CreateAccountSection> createState() => _CreateAccountSectionState();
 }
 
-class _LogInSectionState extends State<LogInSection> {
+class _CreateAccountSectionState extends State<CreateAccountSection> {
   final GlobalKey<FormState> formKey = GlobalKey();
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController phonController = TextEditingController();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController confitmPasswordController =
+      TextEditingController();
+
   bool obscure = true;
+  bool obscure1 = true;
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
@@ -41,7 +44,7 @@ class _LogInSectionState extends State<LogInSection> {
             children: [
               SizedBox(height: 35),
               Text(
-                'login'.tr(),
+                'Create Account'.tr(),
                 style: AppStyles.heading.copyWith(
                   fontWeight: FontWeight.bold,
                   fontSize: 30,
@@ -50,6 +53,14 @@ class _LogInSectionState extends State<LogInSection> {
               SizedBox(height: 25),
               CustomFormField(
                 validator: Validator.phonValidator,
+
+                hint: 'full name',
+                icon: Icons.person,
+                controller: nameController,
+              ),
+              SizedBox(height: 18),
+              CustomFormField(
+                validator: Validator.nameValidator,
                 textInputType: TextInputType.phone,
                 hint: 'phon number',
                 icon: Icons.phone,
@@ -70,9 +81,32 @@ class _LogInSectionState extends State<LogInSection> {
                     ? Icons.visibility_off
                     : Icons.remove_red_eye_sharp,
               ),
+              SizedBox(height: 18),
+              CustomFormField(
+                iconTap: () {
+                  obscure1 = !obscure1;
+                  setState(() {});
+                },
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return 'this field is required'.tr();
+                  } else if (value != passwordController.text) {
+                    return 'No Match'.tr();
+                  } else {
+                    return null;
+                  }
+                },
+                obscureText: obscure1,
+                textInputType: TextInputType.visiblePassword,
+                controller: confitmPasswordController,
+                hint: 'confirm password',
+                icon: obscure1 == true
+                    ? Icons.visibility_off
+                    : Icons.remove_red_eye_sharp,
+              ),
               SizedBox(height: 100),
               CustomButton(
-                name: 'Enter',
+                name: 'Create Account',
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     passwordController.clear();
@@ -88,29 +122,6 @@ class _LogInSectionState extends State<LogInSection> {
                     });
                   }
                 },
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'New User?'.tr(),
-                    style: AppStyles.body.copyWith(
-                      color: AppColors.textPrimary,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      customNavigate(context, kCreateAccount);
-                    },
-                    child: Text(
-                      'Create Account'.tr(),
-                      style: AppStyles.body.copyWith(
-                        color: AppColors.textPrimary,
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ],
           ),

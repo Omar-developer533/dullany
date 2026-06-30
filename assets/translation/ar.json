@@ -4,11 +4,15 @@
 "we select the best for you":"نختار الأفضل لأجلك",
 "login":"تسجيل الدخول",
 "phon number":"رقم الهاتف",
-"password":"كلمة السر",
+"password":"كلمة المرور",
 "Enter":"دخول",
 "New User?":"مستخدم جديد؟ ",
 "Create Account":"انشاء حساب",
 "this field is required":"هذا الحقل مطلوب",
 "Enter the correct number":"يرجى ادخال رقم صحيح",
-"the password maby more than 8 charecters":"كلمة السر يجب ان تكون اكثر من 8 محارف"
+"the password maby more than 8 charecters":"كلمة المرور يجب ان تكون اكثر من 8 محارف",
+
+"full name":"الأسم الكامل",
+"confirm password":"تأكيد كلمة المرور",
+"No Match":"كلمة المرور غير مطابقة"
 }
