@@ -1,3 +1,4 @@
+import 'package:dullany/core/cache/cache_helper.dart';
 import 'package:dullany/core/functions/navigator.dart';
 import 'package:dullany/core/router/app_router.dart';
 import 'package:dullany/core/utls/app_colors.dart';
@@ -77,6 +78,8 @@ class _LogInSectionState extends State<LogInSection> {
                   if (formKey.currentState!.validate()) {
                     passwordController.clear();
                     phonController.clear();
+                    CacheHelper.saveData(key: 'isLoggedIn', value: true);
+                    customReplacementNavigate(context, kCategoriesView);
 
                     setState(() {
                       autovalidateMode = AutovalidateMode.disabled;

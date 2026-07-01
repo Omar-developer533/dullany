@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:dullany/core/cache/cache_helper.dart';
 import 'package:dullany/core/functions/navigator.dart';
 import 'package:dullany/core/router/app_router.dart';
 import 'package:dullany/core/utls/app_colors.dart';
@@ -16,7 +17,13 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    delayedNavigate(context);
+    bool isLoggedIn = CacheHelper.getData(key: 'isLoggedIn') ?? false;
+    if (isLoggedIn) {
+      delayedNavigate(context, kCategoriesView);
+    } else {
+      delayedNavigate(context, kLoginView);
+    }
+
     super.initState();
   }
 
@@ -36,7 +43,7 @@ class _SplashViewState extends State<SplashView> {
   }
 }
 
-Future<void> delayedNavigate(context) async =>
+Future<void> delayedNavigate(context, String path) async =>
     Future.delayed(Duration(seconds: 4), () {
-      customReplacementNavigate(context, kLoginView);
+      customReplacementNavigate(context, path);
     });

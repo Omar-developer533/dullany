@@ -1,9 +1,11 @@
+import 'package:dullany/core/cache/cache_helper.dart';
 import 'package:dullany/core/router/app_router.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await CacheHelper.init();
   await EasyLocalization.ensureInitialized();
   runApp(
     EasyLocalization(
