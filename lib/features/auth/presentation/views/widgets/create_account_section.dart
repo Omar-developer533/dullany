@@ -52,7 +52,7 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
               ),
               SizedBox(height: 25),
               CustomFormField(
-                validator: Validator.phonValidator,
+                validator: Validator.nameValidator,
 
                 hint: 'full name',
                 icon: Icons.person,
@@ -60,7 +60,7 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
               ),
               SizedBox(height: 18),
               CustomFormField(
-                validator: Validator.nameValidator,
+                validator: Validator.phonValidator,
                 textInputType: TextInputType.phone,
                 hint: 'phon number',
                 icon: Icons.phone,
