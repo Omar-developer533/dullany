@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "39002629513",
+    "project_id": "dullany-app",
+    "storage_bucket": "dullany-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:39002629513:android:ec653568c5678c4107ed58",
+        "android_client_info": {
+          "package_name": "com.example.dullany"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByfF4788VRK2-YnHqfwZQ0GIdbwx9jJ9w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
