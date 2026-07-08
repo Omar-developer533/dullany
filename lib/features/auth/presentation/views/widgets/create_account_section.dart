@@ -7,7 +7,7 @@ import 'package:dullany/core/utls/app_colors.dart';
 import 'package:dullany/core/utls/app_styles.dart';
 import 'package:dullany/core/utls/validator.dart';
 import 'package:dullany/core/widgets/custom_button.dart';
-import 'package:dullany/features/auth/presentation/cuibt/cubit/register_cubit.dart';
+import 'package:dullany/features/auth/presentation/cuibt/register_user/register_user_cubit.dart';
 import 'package:dullany/features/auth/presentation/views/widgets/custom_container_indicator.dart';
 import 'package:dullany/features/auth/presentation/views/widgets/custom_form_field.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -34,7 +34,7 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<RegisterCubit, RegisterState>(
+    return BlocConsumer<RegisterUserCubit, RegisterUserState>(
       listener: (context, state) {
         if (state is RegisterSucces) {
           customSnackBar(context, 'Succes');
@@ -130,7 +130,7 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
                           name: 'Create Account',
                           onTap: () {
                             if (formKey.currentState!.validate()) {
-                              context.read<RegisterCubit>().registerUser(
+                              context.read<RegisterUserCubit>().registerUser(
                                 phonController.text,
                                 passwordController.text,
                               );
