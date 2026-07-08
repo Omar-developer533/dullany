@@ -20,5 +20,6 @@
 "the password is to weak":"كلمة المرور ضعيفة جدا",
 "the user is not found":"المستخدم غير موجود",
 "the password is wrong":"كلمة المرور غير صحيحة",
-"oops there was something,please try later":"حدث خطأ ما,حاول لاحقا"
+"oops there was something,please try later":"حدث خطأ ما,حاول لاحقا",
+"Succes create account":"تم انشاء الحساب بنجاح"
 }

@@ -2,6 +2,7 @@ import 'package:dullany/core/cache/cache_helper.dart';
 import 'package:dullany/core/firebase/firebase_auth_service.dart';
 import 'package:dullany/core/router/app_router.dart';
 import 'package:dullany/features/auth/data/repos/auth_repo_impl.dart';
+import 'package:dullany/features/auth/presentation/cuibt/login/login_cubit.dart';
 import 'package:dullany/features/auth/presentation/cuibt/register_user/register_user_cubit.dart';
 import 'package:dullany/firebase_options.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -30,10 +31,19 @@ class Dullany extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RegisterUserCubit(
-        AuthRepoImpl(firebaseAuthService: FirebaseAuthService()),
-      ),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => RegisterUserCubit(
+            AuthRepoImpl(firebaseAuthService: FirebaseAuthService()),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => LoginCubit(
+            AuthRepoImpl(firebaseAuthService: FirebaseAuthService()),
+          ),
+        ),
+      ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         routerConfig: router,

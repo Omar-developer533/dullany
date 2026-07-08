@@ -15,7 +15,8 @@ class FirebaseFailure extends Failure {
       return FirebaseFailure(errorMessage: 'the password is to weak');
     } else if (failure.code == 'email-already-in-use') {
       return FirebaseFailure(errorMessage: 'the email already exists');
-    } else if (failure.code == 'user-not-found') {
+    } else if (failure.code == 'user-not-found' ||
+        failure.code == 'invalid-credential') {
       return FirebaseFailure(errorMessage: 'the user is not found');
     } else if (failure.code == 'wrong-password') {
       return FirebaseFailure(errorMessage: 'the password is wrong');

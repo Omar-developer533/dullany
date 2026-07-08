@@ -13,6 +13,7 @@ import 'package:dullany/features/auth/presentation/views/widgets/custom_form_fie
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CreateAccountSection extends StatefulWidget {
   const CreateAccountSection({super.key});
@@ -37,8 +38,8 @@ class _CreateAccountSectionState extends State<CreateAccountSection> {
     return BlocConsumer<RegisterUserCubit, RegisterUserState>(
       listener: (context, state) {
         if (state is RegisterSucces) {
-          customSnackBar(context, 'Succes');
-          customReplacementNavigate(context, kCategoriesView);
+          customSnackBar(context, 'Succes create account');
+          GoRouter.of(context).pop();
         } else if (state is RegisterFailure) {
           customSnackBar(context, state.errorMessage);
           log(state.errorMessage);

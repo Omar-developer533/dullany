@@ -1,13 +1,17 @@
 import 'package:dullany/core/cache/cache_helper.dart';
+import 'package:dullany/core/functions/custom_snack_bar.dart';
 import 'package:dullany/core/functions/navigator.dart';
 import 'package:dullany/core/router/app_router.dart';
 import 'package:dullany/core/utls/app_colors.dart';
 import 'package:dullany/core/utls/app_styles.dart';
 import 'package:dullany/core/utls/validator.dart';
 import 'package:dullany/core/widgets/custom_button.dart';
+import 'package:dullany/features/auth/presentation/cuibt/login/login_cubit.dart';
+import 'package:dullany/features/auth/presentation/views/widgets/custom_container_indicator.dart';
 import 'package:dullany/features/auth/presentation/views/widgets/custom_form_field.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LogInSection extends StatefulWidget {
   const LogInSection({super.key});
@@ -72,25 +76,39 @@ class _LogInSectionState extends State<LogInSection> {
                     : Icons.remove_red_eye_sharp,
               ),
               SizedBox(height: 100),
-              CustomButton(
-                name: 'Enter',
-                onTap: () {
-                  if (formKey.currentState!.validate()) {
+              BlocConsumer<LoginCubit, LoginState>(
+                listener: (context, state) {
+                  if (state is LoginSuccess) {
                     passwordController.clear();
                     phonController.clear();
-                    CacheHelper.saveData(key: 'isLoggedIn', value: true);
                     customReplacementNavigate(context, kCategoriesView);
-
-                    setState(() {
-                      autovalidateMode = AutovalidateMode.disabled;
-                      FocusScope.of(context).unfocus();
-                    });
-                  } else {
-                    setState(() {
-                      autovalidateMode = AutovalidateMode.always;
-                    });
+                    CacheHelper.saveData(key: 'isLoggedIn', value: true);
+                  } else if (state is LoginFailure) {
+                    customSnackBar(context, state.errorMessage);
                   }
                 },
+                builder: (context, state) => state is LoginLoading
+                    ? CustomContainerIndicator()
+                    : CustomButton(
+                        name: 'Enter',
+                        onTap: () {
+                          if (formKey.currentState!.validate()) {
+                            context.read<LoginCubit>().login(
+                              phonController.text,
+                              passwordController.text,
+                            );
+
+                            setState(() {
+                              autovalidateMode = AutovalidateMode.disabled;
+                              FocusScope.of(context).unfocus();
+                            });
+                          } else {
+                            setState(() {
+                              autovalidateMode = AutovalidateMode.always;
+                            });
+                          }
+                        },
+                      ),
               ),
               SizedBox(height: 10),
               Row(
@@ -102,6 +120,7 @@ class _LogInSectionState extends State<LogInSection> {
                       color: AppColors.textPrimary,
                     ),
                   ),
+
                   InkWell(
                     onTap: () {
                       customNavigate(context, kCreateAccount);
