@@ -15,5 +15,10 @@
 "full name":"الأسم الكامل",
 "confirm password":"تأكيد كلمة المرور",
 "No Match":"كلمة المرور غير مطابقة",
-"Categories":"الفئات"
+"Categories":"الفئات",
+"the email already exists":"الرقم مستخدم مسبقا",
+"the password is to weak":"كلمة المرور ضعيفة جدا",
+"the user is not found":"المستخدم غير موجود",
+"the password is wrong":"كلمة المرور غير صحيحة",
+"oops there was something,please try later":"حدث خطأ ما,حاول لاحقا"
 }

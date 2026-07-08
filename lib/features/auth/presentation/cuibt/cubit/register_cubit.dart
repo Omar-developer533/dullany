@@ -1,17 +1,17 @@
-import 'package:bloc/bloc.dart';
 import 'package:dullany/features/auth/data/repos/auth_repo.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'register_state.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
   RegisterCubit(this._authRepo) : super(RegisterInitial());
   final AuthRepo _authRepo;
-  Future<void> register(String phonNum, String passwored) async {
+  Future<void> registerUser(String phonNum, String passwored) async {
     emit(RegisterLoading());
     final result = await _authRepo.registerUser(phonNum, passwored);
     result.fold(
       (failure) {
-        emit(RegisterFailure(errorMessage: failure));
+        emit(RegisterFailure(errorMessage: failure.errorMessage));
       },
       (succes) {
         emit(RegisterSucces());

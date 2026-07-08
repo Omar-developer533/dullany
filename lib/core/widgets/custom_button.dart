@@ -4,9 +4,10 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.name, this.onTap});
+  const CustomButton({super.key, required this.name, this.onTap, });
   final String name;
   final VoidCallback? onTap;
+  
   @override
   Widget build(BuildContext context) {
     return InkWell(
