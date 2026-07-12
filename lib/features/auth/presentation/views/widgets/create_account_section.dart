@@ -1,8 +1,7 @@
 import 'dart:developer';
 
 import 'package:dullany/core/functions/custom_snack_bar.dart';
-import 'package:dullany/core/functions/navigator.dart';
-import 'package:dullany/core/router/app_router.dart';
+
 import 'package:dullany/core/utls/app_colors.dart';
 import 'package:dullany/core/utls/app_styles.dart';
 import 'package:dullany/core/utls/validator.dart';

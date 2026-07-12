@@ -2,8 +2,20 @@
 class Assets {
   Assets._();
   
+  /// Assets for assetsImagesDrinks
+  /// assets/images/drinks.png
+  static const String assetsImagesDrinks = "assets/images/drinks.png";
+
+  /// Assets for assetsImagesMarket
+  /// assets/images/market.png
+  static const String assetsImagesMarket = "assets/images/market.png";
+
   /// Assets for assetsImagesOnBoarding2
   /// assets/images/on_boarding2.png
   static const String assetsImagesOnBoarding2 = "assets/images/on_boarding2.png";
+
+  /// Assets for assetsImagesResturant2
+  /// assets/images/resturant2.png
+  static const String assetsImagesResturant2 = "assets/images/resturant2.png";
 }
 

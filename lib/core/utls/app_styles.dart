@@ -25,4 +25,13 @@ class AppStyles {
     fontWeight: FontWeight.bold,
     color: AppColors.white,
   );
+  static const TextStyle style18Bold = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
+  static const TextStyle style12Regular = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w400,
+    color: Color(0xff3D4947),
+  );
 }
