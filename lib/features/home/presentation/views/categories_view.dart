@@ -1,3 +1,5 @@
+import 'package:dullany/core/functions/navigator.dart';
+import 'package:dullany/core/router/app_router.dart';
 import 'package:dullany/core/utls/app_colors.dart';
 
 import 'package:dullany/core/widgets/custom_app_bar.dart';
@@ -18,6 +20,12 @@ class CategoriesView extends StatelessWidget {
         body: Padding(
           padding: const EdgeInsets.only(top: 15, left: 16, right: 16),
           child: CategoryGridView(),
+        ),
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: AppColors.primary,
+          onPressed: () {
+            customNavigate(context, kControlView);
+          },
         ),
       ),
     );
