@@ -12,7 +12,9 @@ class ControlAppBar extends StatelessWidget implements PreferredSizeWidget {
       actionsPadding: EdgeInsets.only(left: 12),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           icon: Icon(Icons.arrow_forward, color: AppColors.white),
         ),
       ],
@@ -37,6 +39,6 @@ class ControlAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  // TODO: implement preferredSize
+
   Size get preferredSize => Size(double.infinity, 55);
 }

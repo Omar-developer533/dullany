@@ -4,23 +4,30 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.title, required this.icon, this.onPressed});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    required this.icon,
+    this.onPressed,
+  });
   final String title;
-  final IconData icon;final void Function()? onPressed;
+  final IconData icon;
+  final void Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: AppColors.primary,
       elevation: 0,
       titleSpacing: 3,
       leading: IconButton(
         onPressed: () {},
-        icon: Icon(Icons.menu, color: AppColors.primary),
+        icon: Icon(Icons.menu, color: AppColors.white),
       ),
       title: Text(
         maxLines: 1,
         title.tr(),
         style: AppStyles.heading.copyWith(
-          color: AppColors.primary,
+          color: AppColors.white,
           fontSize: 25,
           fontWeight: FontWeight.w500,
           fontFamily: 'cairo',
@@ -30,8 +37,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Padding(
           padding: const EdgeInsets.only(left: 5),
           child: IconButton(
-            onPressed:onPressed ,
-            icon: Icon(icon, color: AppColors.primary, size: 28),
+            onPressed: onPressed,
+            icon: Icon(icon, color: AppColors.white, size: 28),
           ),
         ),
       ],
@@ -39,5 +46,5 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   @override
-  Size get preferredSize => Size(double.infinity, 55);
+  Size get preferredSize => Size(double.infinity, 60);
 }
