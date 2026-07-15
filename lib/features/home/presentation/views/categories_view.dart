@@ -14,7 +14,7 @@ class CategoriesView extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: CustomAppBar(title: 'Categories'),
+        appBar: CustomAppBar(title: 'Categories', icon: Icons.logout),
         backgroundColor: AppColors.background,
 
         body: Padding(
@@ -22,6 +22,9 @@ class CategoriesView extends StatelessWidget {
           child: CategoryGridView(),
         ),
         floatingActionButton: FloatingActionButton(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(200),
+          ),
           backgroundColor: AppColors.primary,
           onPressed: () {
             customNavigate(context, kControlView);

@@ -11,8 +11,15 @@ class CustomFormField extends StatelessWidget {
     this.textInputType,
     this.validator,
     this.controller,
-    this.obscureText = false, this.iconTap,
+    this.obscureText = false,
+    this.iconTap,
+    this.fillColor,
+    this.filled,
+    this.borderColor,
   });
+  final Color? borderColor;
+  final bool? filled;
+  final Color? fillColor;
   final VoidCallback? iconTap;
   final TextEditingController? controller;
   final bool obscureText;
@@ -28,6 +35,8 @@ class CustomFormField extends StatelessWidget {
       validator: validator,
       keyboardType: textInputType,
       decoration: InputDecoration(
+        filled: filled,
+        fillColor: fillColor,
         hint: Text(
           hint.tr(),
           style: AppStyles.body.copyWith(color: AppColors.textPSecondary),
@@ -37,7 +46,9 @@ class CustomFormField extends StatelessWidget {
           child: Icon(icon, color: AppColors.textPSecondary),
         ),
         border: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.textPSecondary),
+          borderSide: BorderSide(
+            color: borderColor ?? AppColors.textPSecondary,
+          ),
           borderRadius: BorderRadius.circular(16),
         ),
         focusedBorder: OutlineInputBorder(
@@ -45,7 +56,9 @@ class CustomFormField extends StatelessWidget {
           borderRadius: BorderRadius.circular(16),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.textPSecondary),
+          borderSide: BorderSide(
+            color: borderColor ?? AppColors.textPSecondary,
+          ),
           borderRadius: BorderRadius.circular(16),
         ),
       ),

@@ -28,5 +28,13 @@
 "Delicious dishes":"أشهى المأكولات",
 "Market":"ماركت",
 "Daily needs":"احتياجاتك اليومية",
-"control panel":"لوحة التحكم"
+"control panel":"لوحة التحكم",
+"Add New Category":"اضافة فئة جديدة",
+"Category Name":"أسم الفئة",
+"Description":"الوصف",
+"Image":"الصورة",
+"Add":"اضافة",
+"Manager Items:":"ادارة العناصر :",
+"New Item":"   عنصر جديد" 
+
 }
