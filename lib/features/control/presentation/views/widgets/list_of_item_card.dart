@@ -1,5 +1,4 @@
-
-import 'package:dullany/features/control/presentation/views/widgets/item_card.dart';
+import 'package:dullany/features/control/presentation/views/widgets/control_item_card.dart';
 import 'package:flutter/material.dart';
 
 class ListOfItemCard extends StatelessWidget {
@@ -12,7 +11,7 @@ class ListOfItemCard extends StatelessWidget {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-          child: ItemCard(),
+          child: ControlItemCard(),
         );
       },
     );

@@ -3,8 +3,8 @@ import 'package:dullany/core/utls/app_images.dart';
 import 'package:dullany/core/utls/app_styles.dart';
 import 'package:flutter/material.dart';
 
-class ItemCard extends StatelessWidget {
-  const ItemCard({super.key});
+class ControlItemCard extends StatelessWidget {
+  const ControlItemCard({super.key});
 
   @override
   Widget build(BuildContext context) {

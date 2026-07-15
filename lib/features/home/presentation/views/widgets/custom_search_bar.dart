@@ -1,12 +1,9 @@
-
 import 'package:dullany/core/utls/app_colors.dart';
 import 'package:dullany/core/utls/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({
-    super.key,
-  });
+  const CustomSearchBar({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +15,7 @@ class CustomSearchBar extends StatelessWidget {
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
-          side: BorderSide(color: Color(0xffBCC9C6)),
+          side: BorderSide(color: AppColors.borderColor),
         ),
       ),
       backgroundColor: WidgetStateProperty.all(AppColors.background),

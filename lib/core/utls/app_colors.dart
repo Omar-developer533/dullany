@@ -12,4 +12,5 @@ class AppColors {
   static const Color textPSecondary = Color(0xFF757575);
   static const Color white = Colors.white;
   static const Color fillTextField = Color(0xffEFF5F2);
+  static const Color rateColor = Color(0xffBf6A02);static const Color borderColor =  Color(0xffBCC9C6);
 }
