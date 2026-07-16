@@ -3,14 +3,14 @@ import 'package:dullany/core/utls/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
-  const CustomSearchBar({super.key});
-
+  const CustomSearchBar({super.key, required this.hintText});
+  final String hintText;
   @override
   Widget build(BuildContext context) {
     return SearchBar(
       leading: Icon(Icons.search),
       hintStyle: WidgetStateProperty.all(AppStyles.style14Regular),
-      hintText: 'اختر مطعمك المفضل',
+      hintText: hintText,
       elevation: WidgetStateProperty.all(0),
       shape: WidgetStateProperty.all(
         RoundedRectangleBorder(

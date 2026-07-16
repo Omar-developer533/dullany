@@ -13,7 +13,13 @@ class ItemsView extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.white,
-        appBar: CustomAppBar(title: 'المطاعم', icon: Icons.arrow_forward),
+        appBar: CustomAppBar(
+          title: 'المطاعم',
+          icon: Icons.arrow_forward,
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: CustomScrollView(
@@ -22,8 +28,8 @@ class ItemsView extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: 10),
-                    CustomSearchBar(),
-                    SizedBox(height: 10),
+                    CustomSearchBar(hintText: 'اختر مطعمك المفضل'),
+                    SizedBox(height: 22),
                   ],
                 ),
               ),
@@ -31,7 +37,7 @@ class ItemsView extends StatelessWidget {
                 itemCount: 10,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.only(top: 16),
+                    padding: const EdgeInsets.only(bottom: 16),
                     child: ItemCard(),
                   );
                 },
