@@ -1,4 +1,4 @@
-
+import 'package:dullany/core/firebase/firebase_firestore_service.dart';
 import 'package:dullany/core/utls/app_colors.dart';
 import 'package:dullany/core/utls/app_styles.dart';
 import 'package:dullany/core/widgets/custom_button.dart';
@@ -6,9 +6,16 @@ import 'package:dullany/features/auth/presentation/views/widgets/custom_form_fie
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
-class AddCategory extends StatelessWidget {
+class AddCategory extends StatefulWidget {
   const AddCategory({super.key});
 
+  @override
+  State<AddCategory> createState() => _AddCategoryState();
+}
+
+class _AddCategoryState extends State<AddCategory> {
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController desController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,6 +38,7 @@ class AddCategory extends StatelessWidget {
           child: Column(
             children: [
               CustomFormField(
+                controller: nameController,
                 borderColor: Colors.transparent,
                 filled: true,
                 fillColor: AppColors.fillTextField,
@@ -39,6 +47,7 @@ class AddCategory extends StatelessWidget {
               ),
               SizedBox(height: 16),
               CustomFormField(
+                controller: desController,
                 borderColor: Colors.transparent,
                 filled: true,
                 fillColor: AppColors.fillTextField,
@@ -54,7 +63,15 @@ class AddCategory extends StatelessWidget {
                 icon: Icons.image,
               ),
               SizedBox(height: 16),
-              CustomButton(name: 'Add'),
+              CustomButton(
+                name: 'Add',
+                onTap: () {
+                  FirebaseFirestoreService().add('category', {
+                    'name': nameController.text,
+                    'description': desController.text,
+                  });
+                },
+              ),
             ],
           ),
         ),

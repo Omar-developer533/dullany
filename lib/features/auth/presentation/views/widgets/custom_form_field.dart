@@ -15,8 +15,10 @@ class CustomFormField extends StatelessWidget {
     this.iconTap,
     this.fillColor,
     this.filled,
-    this.borderColor, this.suffexText,
+    this.borderColor,
+    this.suffexText,
   });
+ 
   final Widget? suffexText;
   final Color? borderColor;
   final bool? filled;
@@ -42,10 +44,12 @@ class CustomFormField extends StatelessWidget {
           hint.tr(),
           style: AppStyles.body.copyWith(color: AppColors.textPSecondary),
         ),
-        suffixIcon:suffexText?? InkWell(
-          onTap: iconTap,
-          child: Icon(icon, color: AppColors.textPSecondary),
-        ),
+        suffixIcon:
+            suffexText ??
+            InkWell(
+              onTap: iconTap,
+              child: Icon(icon, color: AppColors.textPSecondary),
+            ),
         border: OutlineInputBorder(
           borderSide: BorderSide(
             color: borderColor ?? AppColors.textPSecondary,
