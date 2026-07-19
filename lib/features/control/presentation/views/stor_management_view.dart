@@ -20,22 +20,36 @@ class StoreManagementView extends StatelessWidget {
           title: 'Store Management',
           icon: Icons.arrow_forward,
         ),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(height: 32),
-              AddProduct(),
-              SizedBox(height: 24),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('My Products'.tr(), style: AppStyles.style18Bold),
-                  IconButton(onPressed: () {}, icon: Icon(Icons.search)),
-                ],
+        body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: CustomScrollView(
+            physics: BouncingScrollPhysics(),
+            slivers: [
+              SliverToBoxAdapter(
+                child: Column(
+                  children: [
+                    SizedBox(height: 32),
+                    AddProduct(),
+                    SizedBox(height: 24),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text('My Products'.tr(), style: AppStyles.style18Bold),
+                        IconButton(onPressed: () {}, icon: Icon(Icons.search)),
+                      ],
+                    ),
+                  ],
+                ),
               ),
-              ControlProductCard(),
-              SizedBox(height: 15),
-              ControlProductCard(),
+              SliverList.builder(
+                itemCount: 10,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.only(bottom: 16),
+                    child: ControlProductCard(),
+                  );
+                },
+              ),
             ],
           ),
         ),
