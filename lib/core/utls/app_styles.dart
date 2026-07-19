@@ -43,4 +43,9 @@ class AppStyles {
     fontWeight: FontWeight.w400,
     color: Color(0xff3D4947),
   );
+  static const TextStyle style16Regular = TextStyle(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: Color(0xff3D4947),
+  );
 }

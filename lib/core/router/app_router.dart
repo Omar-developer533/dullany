@@ -1,6 +1,7 @@
 import 'package:dullany/features/auth/presentation/views/create_account_view.dart';
 import 'package:dullany/features/auth/presentation/views/log_in_view.dart';
 import 'package:dullany/features/control/presentation/views/control_view.dart';
+import 'package:dullany/features/control/presentation/views/stor_management_view.dart';
 import 'package:dullany/features/home/presentation/views/product_view.dart';
 import 'package:dullany/features/home/presentation/views/categories_view.dart';
 import 'package:dullany/features/home/presentation/views/items_view.dart';
@@ -13,6 +14,7 @@ const kCategoriesView = '/categoriesView';
 const kControlView = '/controlView';
 const kItemsView = '/itemsView';
 const kProductView = '/ProductView';
+const kStoreManagementView = '/StoreManagementView';
 final GoRouter router = GoRouter(
   routes: [
     GoRoute(path: '/', builder: (context, state) => SplashView()),
@@ -28,5 +30,9 @@ final GoRouter router = GoRouter(
     GoRoute(path: kControlView, builder: (context, state) => ControlView()),
     GoRoute(path: kItemsView, builder: (context, state) => ItemsView()),
     GoRoute(path: kProductView, builder: (context, state) => ProductView()),
+    GoRoute(
+      path: kStoreManagementView,
+      builder: (context, state) => StoreManagementView(),
+    ),
   ],
 );
