@@ -1,4 +1,3 @@
-
 import 'package:dartz/dartz.dart';
 import 'package:dullany/core/errors/failure.dart';
 import 'package:dullany/core/firebase/firebase_auth_service.dart';
@@ -15,9 +14,9 @@ class AuthRepoImpl extends AuthRepo {
       await firebaseAuthService.loginWithEmailAndPasswored(phonNum, passwored);
       return right(null);
     } on FirebaseAuthException catch (e) {
-      return left(FirebaseFailure.fromFirebaseAuthException(e));
+      return left(FirebaseAuthFailure.fromFirebaseAuthException(e));
     } catch (e) {
-      return left(FirebaseFailure(errorMessage: e.toString()));
+      return left(FirebaseAuthFailure(errorMessage: e.toString()));
     }
   }
 
@@ -34,9 +33,9 @@ class AuthRepoImpl extends AuthRepo {
 
       return right(null);
     } on FirebaseAuthException catch (e) {
-      return left(FirebaseFailure.fromFirebaseAuthException(e));
+      return left(FirebaseAuthFailure.fromFirebaseAuthException(e));
     } catch (e) {
-      return left(FirebaseFailure(errorMessage: e.toString()));
+      return left(FirebaseAuthFailure(errorMessage: e.toString()));
     }
   }
 }
