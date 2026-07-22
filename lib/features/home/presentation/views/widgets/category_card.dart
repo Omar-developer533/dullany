@@ -2,7 +2,8 @@ import 'package:dullany/core/functions/navigator.dart';
 import 'package:dullany/core/router/app_router.dart';
 import 'package:dullany/core/utls/app_colors.dart';
 import 'package:dullany/core/utls/app_styles.dart';
-import 'package:dullany/features/home/data/models/category_model.dart';
+import 'package:dullany/features/control/data/model/category_model.dart';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
@@ -35,7 +36,7 @@ class CategoryCard extends StatelessWidget {
             Text(categoryModel.categoryName.tr(), style: AppStyles.style18Bold),
 
             Text(
-              categoryModel.describtion.tr(),
+              categoryModel.description.tr(),
               style: AppStyles.style12Regular,
             ),
             SizedBox(height: 17),

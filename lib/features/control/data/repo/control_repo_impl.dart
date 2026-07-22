@@ -7,13 +7,12 @@ import 'package:dullany/features/control/data/repo/control_repo.dart';
 class ControlRepoImpl extends ControlRepo {
   final FirebaseFirestoreService firebaseFirestoreService =
       FirebaseFirestoreService();
-  final String collectionName;
+  
 
-  ControlRepoImpl({required this.collectionName});
   @override
-  Future<Either<Failure, void>> addDoc(docValue) async {
+  Future<Either<Failure, void>> addDoc(String collectionName,docValue) async {
     try {
-      await firebaseFirestoreService.add(collectionName, docValue);
+      await firebaseFirestoreService.add(  collectionName, docValue);
       return right(null);
     } on FirebaseException catch (e) {
       return left(FirebaseFireStorFailure.fromFirebaseException(e));
@@ -21,9 +20,8 @@ class ControlRepoImpl extends ControlRepo {
       return left(FirebaseFireStorFailure(errorMessage: e.toString()));
     }
   }
-
   @override
-  Future<Either<Failure, void>> deleteCategory(String docId) async {
+  Future<Either<Failure, void>> deleteCategory(  String collectionName,String docId) async {
     try {
       await firebaseFirestoreService.deleteDoc(collectionName, docId);
       return right(null);
@@ -36,7 +34,7 @@ class ControlRepoImpl extends ControlRepo {
 
   @override
   Future<Either<Failure, QuerySnapshot<Map<String, dynamic>>>>
-  getAllDoc() async {
+  getAllDoc(String collectionName,) async {
     try {
       var docs = await firebaseFirestoreService.getAllDoc(collectionName);
       return right(docs);
@@ -48,7 +46,7 @@ class ControlRepoImpl extends ControlRepo {
   }
 
   @override
-  Future<Either<Failure, DocumentSnapshot<Map<String, dynamic>>>> getDoc(
+  Future<Either<Failure, DocumentSnapshot<Map<String, dynamic>>>> getDoc(String collectionName,
     String docId,
   ) async {
     try {
@@ -62,7 +60,7 @@ class ControlRepoImpl extends ControlRepo {
   }
 
   @override
-  Future<Either<Failure, void>> updateCategory(
+  Future<Either<Failure, void>> updateCategory(String collectionName,
     String docId,
     Map<String, dynamic> docValue,
   ) async {

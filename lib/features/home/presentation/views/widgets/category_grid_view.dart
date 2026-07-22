@@ -1,6 +1,6 @@
-
 import 'package:dullany/core/utls/app_images.dart';
-import 'package:dullany/features/home/data/models/category_model.dart';
+import 'package:dullany/features/control/data/model/category_model.dart';
+
 import 'package:dullany/features/home/presentation/views/widgets/category_card.dart';
 import 'package:flutter/material.dart';
 
@@ -21,21 +21,21 @@ class CategoryGridView extends StatelessWidget {
           categoryModel: CategoryModel(
             image: Assets.assetsImagesDrinks,
             categoryName: 'Drinks',
-            describtion: 'Natural and refreshing',
+            description: 'Natural and refreshing',
           ),
         ),
         CategoryCard(
           categoryModel: CategoryModel(
             image: Assets.assetsImagesMarket,
             categoryName: 'Market',
-            describtion: 'Daily needs',
+            description: 'Daily needs',
           ),
         ),
         CategoryCard(
           categoryModel: CategoryModel(
             image: Assets.assetsImagesResturant2,
             categoryName: 'Resturant',
-            describtion: 'Delicious dishes',
+            description: 'Delicious dishes',
           ),
         ),
       ],

@@ -80,6 +80,6 @@ class AddProduct extends StatelessWidget {
         ),
       ],
     );
-    ;
+    
   }
 }
