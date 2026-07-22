@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 abstract class Failure {
@@ -59,6 +60,49 @@ class FirebaseFireStorFailure extends Failure {
         return FirebaseFireStorFailure(
           errorMessage: "حدث خطأ غير معروف: ${error.code}",
         );
+    }
+  }
+}
+
+class ServerFailure extends Failure {
+  ServerFailure({required super.errorMessage});
+  factory ServerFailure.fromDioeror(DioException e) {
+    switch (e.type) {
+      case DioExceptionType.connectionTimeout:
+        return ServerFailure(errorMessage: 'انتهت مهلة الأتصال بالخادم');
+
+      case DioExceptionType.sendTimeout:
+        return ServerFailure(errorMessage: 'انتهت مهلة الارسال');
+      case DioExceptionType.receiveTimeout:
+        return ServerFailure(errorMessage: 'انتهت مهلت الاستقبال');
+      case DioExceptionType.badCertificate:
+        return ServerFailure(
+          errorMessage: 'تعذر الاتصال بالخادم بسبب شهادة أمان غير صالحة',
+        );
+      case DioExceptionType.badResponse:
+        ServerFailure.fromBadResponse(e.response);
+      case DioExceptionType.cancel:
+        return ServerFailure(errorMessage: 'تم إلغاء الطلب');
+      case DioExceptionType.connectionError:
+        return ServerFailure(errorMessage: 'خطأ الاتصال بالخادم');
+      case DioExceptionType.unknown:
+        return ServerFailure(errorMessage: 'حدث خطأ ما');
+      case DioExceptionType.transformTimeout:
+        return ServerFailure(errorMessage: 'نتهت مهلة معالجة البيانات');
+    }
+    return ServerFailure(errorMessage: 'حدث خطأ ما , حاول لاحقا');
+  }
+  factory ServerFailure.fromBadResponse(dynamic response) {
+    if (response['status code'] == 404) {
+      return ServerFailure(errorMessage: '');
+    } else if (response['status code'] == 500) {
+      return ServerFailure(errorMessage: '');
+    } else if (response['status code'] == 400 ||
+        response['status code'] == 403 ||
+        response['status code'] == 401) {
+      return ServerFailure(errorMessage: response['error']['message']);
+    } else {
+      return ServerFailure(errorMessage: 'يوجد خطأ ما حاول لاحقا');
     }
   }
 }
